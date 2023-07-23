@@ -53,9 +53,7 @@
 #'
 #' - Anyone using this package is responsible for keeping an eye on their token usage to avoid excessive consumption (except for free models).
 #'
-#' - The default maximum prompt template consumes about 400 tokens, and the final number of tokens needs to be added to this plus the tokens for your data structure and requirement text, so you can further streamline the prompt templates to save tokens, but there are obvious trade-offs, as few prompts may not yield effective results, or may even increase the final cost (e.g. asking the model not to give any code comments).
-#'
-#' - For some simple operations, it is clearly unwise to pay for implementation using the model.
+#' - The default maximum prompt template consumes about 400 tokens, and the final number of tokens needs to plus the tokens for your data structure and requirement text, so you can further streamline the prompt templates to save tokens, but there are obvious trade-offs, as few prompts may not yield effective results, or may even increase the final cost (e.g. asking the model not to give any code comments).
 #'
 #' - Another approach is to filter out the necessary columns for larger data frames and pass them in.
 #'
@@ -66,7 +64,7 @@
 #'
 #' - See the function \link{mychat} for an example of a custom API interface function.
 #'
-#' - The input parameters and output form of the function must be consistent with the example function, even if you don't actually use them at all. The input parameters include the text to be passed directly to the model, the type of model to select, and whether to display token usage. The function needs to return a list of model response text (answer =) and web access status codes (status_code =), and the naming needs to be fixed. If you don't use the status code, set it to a constant value of 200 and return it.
+#' - The input parameters and output form of the function must be consistent with the example function, even if you don't actually use them at all. The input parameters include the text to be passed directly to the model, the type of model to select, and whether to display token usage. The function needs to return a list of model response text (answer =) and web access status codes (status_code =). If you don't use the status code, set it to a constant value of 200 and return it.
 #'
 #' - Other necessary parameters should be added by reading and writing environment variables.
 #'

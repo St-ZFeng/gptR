@@ -10,7 +10,8 @@ Description: Enables you to plug models such as GPT directly into the R language
     laboriously communicating with your model and then copying the resulting code into R to run it.
     Rest assured that the content of your data is not passed on to the model, thus ensuring a degree of data privacy. The model only gets the name and 
     class of the variable, and for data types such as dataframes, the name of its column and the class of the column.
-    See the the AIPROCESS function description documentation for a more detailed description.
+    See the URL or the AIPROCESS function description documentation for a more detailed description.
+URL: https://github.com/St-ZFeng/gptR
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
