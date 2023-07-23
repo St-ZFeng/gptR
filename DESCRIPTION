@@ -1,0 +1,21 @@
+Package: gptR
+Type: Package
+Title: Plug GPT Directly into Your R Data Analysis Process
+Version: 0.1.0
+Author: person(given= "Feng", family = "Zhao", email = "515264833@qq.com", role = c("aut", "cre"))
+Description: Enables you to plug models such as GPT directly into the R language data analysis process.
+    In short, the AIPROCESS function is utilized to achieve this functionality. All you need to do is write down your requirements, choose a model and pass 
+    the necessary data variables into the function. The model then gives you everything, including variables, dataframes and even a plot! The best part is 
+    that it all runs automatically and is customized to your data structure, so it is relatively efficient and fast. This somewhat avoids the dilemma of 
+    laboriously communicating with your model and then copying the resulting code into R to run it.
+    Rest assured that the content of your data is not passed on to the model, thus ensuring a degree of data privacy. The model only gets the name and 
+    class of the variable, and for data types such as dataframes, the name of its column and the class of the column.
+    See the the AIPROCESS function description documentation for a more detailed description.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    stringr
+RoxygenNote: 7.2.3
+Depends: 
+    httr
