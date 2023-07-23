@@ -100,4 +100,4 @@ number3 <- AIPROCESS("Sum all numbers in the data frame", "gpt-4", df3, showtoke
 - Other necessary parameters should be added by reading and writing environment variables.
 
 
-There's not much more to say, you can refer to the example and try to use it. The package also contains some of the functions that interact with the Openai chatgpt API. Please refer to the R package documentation for details```help(AIPROCESS)```. Don't expect too much from it. I just thought it was an interesting way to write the code, so I posted it here. And if you are an R program expert, you obviously don't need this. 
+There's not much more to say, you can refer to the example and try to use it. The package also contains some of the functions that interact with the Openai chatgpt API. Please refer to the R package documentation: ```help(AIPROCESS)``` for details and get all the functions by ```ls ("package:gptR")```. Don't expect too much from it. I just thought it was an interesting way to write the code, so I posted it here. And if you are an R program expert, you obviously don't need this. 
