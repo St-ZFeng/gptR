@@ -6,14 +6,11 @@ Rest assured that the content of your data is not passed on to the model, thus e
 # How to use it?
 - Install the package
 ```
-devtools::install_github("username/packagename")
+# install.packages(devtools)
+devtools::install_github("St-ZFeng/gptR")
 ```
+Temporarily unable to download via install.packages()
 
-or
-
-```
-install
-```
 - You need to store your openai API key and base url as environment variables, or use the following code in R (but this seems to be a one-off):
 
 ```
