@@ -24,7 +24,7 @@ openaichat_continue <- function(messagelist, model, showresult = FALSE, showtoke
 
   api_key <- Sys.getenv("OPENAI_API_KEY")
   base_url <- ifelse(Sys.getenv("OPENAI_BASE_URL") == "", "https://api.openai.com/v1", Sys.getenv("OPENAI_BASE_URL"))
-  max_tokens <- ifelse(Sys.getenv("OPENAI_MAX_TOKENS") == "", "inf", Sys.getenv("OPENAI_MAX_TOKENS"))
+  max_tokens <- ifelse(Sys.getenv("OPENAI_MAX_TOKENS") == "", Inf, Sys.getenv("OPENAI_MAX_TOKENS"))
   temperature <- ifelse(Sys.getenv("OPENAI_TEMPERATURE") == "", 1, Sys.getenv("OPENAI_TEMPERATURE"))
   top_p <- ifelse(Sys.getenv("OPENAI_TOP_P") == "", 1, Sys.getenv("OPENAI_TOP_P"))
   frequency_penalty <- ifelse(Sys.getenv("OPENAI_FREQUENCY_PENALTY") == "", 0, Sys.getenv("OPENAI_FREQUENCY_PENALTY"))
