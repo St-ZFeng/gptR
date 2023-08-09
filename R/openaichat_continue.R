@@ -24,29 +24,35 @@ openaichat_continue <- function(messagelist, model, showresult = FALSE, showtoke
 
   api_key <- Sys.getenv("OPENAI_API_KEY")
   base_url <- ifelse(Sys.getenv("OPENAI_BASE_URL") == "", "https://api.openai.com/v1", Sys.getenv("OPENAI_BASE_URL"))
-  max_tokens <- ifelse(Sys.getenv("OPENAI_MAX_TOKENS") == "", Inf, Sys.getenv("OPENAI_MAX_TOKENS"))
+  max_tokens <- ifelse(Sys.getenv("OPENAI_MAX_TOKENS") == "", "Inf", Sys.getenv("OPENAI_MAX_TOKENS"))
   temperature <- ifelse(Sys.getenv("OPENAI_TEMPERATURE") == "", 1, Sys.getenv("OPENAI_TEMPERATURE"))
   top_p <- ifelse(Sys.getenv("OPENAI_TOP_P") == "", 1, Sys.getenv("OPENAI_TOP_P"))
   frequency_penalty <- ifelse(Sys.getenv("OPENAI_FREQUENCY_PENALTY") == "", 0, Sys.getenv("OPENAI_FREQUENCY_PENALTY"))
   presence_penalty <- ifelse(Sys.getenv("OPENAI_PRESENCE_PENALTY") == "", 0, Sys.getenv("OPENAI_PRESENCE_PENALTY"))
-
+  if (max_tokens=="Inf")
+  {
+    max_tokens=Inf
+  }else
+  {
+    max_tokens=as.integer(max_tokens)
+  }
 
   chaturl <- paste0(base_url,"/chat/completions")
 
 
   response <- httr::POST(
     url = chaturl,
-    add_headers(Authorization = paste("Bearer", api_key)),
+    config =add_headers(Authorization = paste("Bearer", api_key)),
     content_type_json(),
     encode = "json",
     body = list(
       model = model,
       messages = messagelist,
       max_tokens = max_tokens,
-      temperature = temperature,
-      top_p = top_p,
-      presence_penalty = presence_penalty,
-      frequency_penalty = frequency_penalty
+      temperature = as.double(temperature),
+      top_p = as.double(top_p),
+      presence_penalty = as.double(presence_penalty),
+      frequency_penalty = as.double(frequency_penalty)
     )
   )
 
