@@ -31,10 +31,26 @@ openaichat_continue <- function(messagelist, model, showresult = FALSE, showtoke
   presence_penalty <- ifelse(Sys.getenv("OPENAI_PRESENCE_PENALTY") == "", 0, Sys.getenv("OPENAI_PRESENCE_PENALTY"))
   if (max_tokens=="Inf")
   {
-    max_tokens=Inf
+    body = list(
+      model = model,
+      messages = messagelist,
+      temperature = as.double(temperature),
+      top_p = as.double(top_p),
+      presence_penalty = as.double(presence_penalty),
+      frequency_penalty = as.double(frequency_penalty)
+    )
   }else
   {
     max_tokens=as.integer(max_tokens)
+    body = list(
+      model = model,
+      messages = messagelist,
+      max_tokens = max_tokens,
+      temperature = as.double(temperature),
+      top_p = as.double(top_p),
+      presence_penalty = as.double(presence_penalty),
+      frequency_penalty = as.double(frequency_penalty)
+    )
   }
 
   chaturl <- paste0(base_url,"/chat/completions")
@@ -45,15 +61,7 @@ openaichat_continue <- function(messagelist, model, showresult = FALSE, showtoke
     config =add_headers(Authorization = paste("Bearer", api_key)),
     content_type_json(),
     encode = "json",
-    body = list(
-      model = model,
-      messages = messagelist,
-      max_tokens = max_tokens,
-      temperature = as.double(temperature),
-      top_p = as.double(top_p),
-      presence_penalty = as.double(presence_penalty),
-      frequency_penalty = as.double(frequency_penalty)
-    )
+    body = body
   )
 
   if (response$status_code == 200)
