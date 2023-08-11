@@ -17,6 +17,7 @@ Temporarily unable to download via install.packages()
 Sys.setenv(OPENAI_API_KEY = "XXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 Sys.setenv(OPENAI_BASE_URL = "https://XXXXXXXXXXXXXXXXXXXX/v1")
 ```
+- For azure openai API, give the full URL: "https://YOUR_RESOURCE_NAME.openai.azure.com/openai/deployments/YOUR_DEPLOYMENT_NAME/chat/completions?api-version=2023-05-15"
 
 - In some cases these two parameters are not required, the BASE_URL defaults to the openai official API url, in which case you can leave this environment variable unset. The default API_KEY is an empty string.
 
