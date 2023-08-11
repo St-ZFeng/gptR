@@ -52,17 +52,29 @@ openaichat_continue <- function(messagelist, model, showresult = FALSE, showtoke
       frequency_penalty = as.double(frequency_penalty)
     )
   }
-
-  chaturl <- paste0(base_url,"/chat/completions")
-
-
-  response <- httr::POST(
-    url = chaturl,
-    config =add_headers(Authorization = paste("Bearer", api_key)),
-    content_type_json(),
-    encode = "json",
-    body = body
-  )
+  if ( grepl("azure.com", base_url) )
+  {
+    chaturl<-base_url
+    body$model=NULL
+    response <- httr::POST(
+      url = chaturl,
+      config =add_headers("api-key" = api_key),
+      content_type_json(),
+      encode = "json",
+      body = body
+    )
+  }
+  else
+  {
+    chaturl <- paste0(base_url,"/chat/completions")
+    response <- httr::POST(
+      url = chaturl,
+      config =add_headers(Authorization = paste("Bearer", api_key)),
+      content_type_json(),
+      encode = "json",
+      body = body
+    )
+  }
 
   if (response$status_code == 200)
   {
@@ -86,8 +98,6 @@ openaichat_continue <- function(messagelist, model, showresult = FALSE, showtoke
       cat("\nBot:\n")
       cat(chatGPT_answer)
     }
-
-
   }else
   {
     chatGPT_answer <- httr::content(response)
