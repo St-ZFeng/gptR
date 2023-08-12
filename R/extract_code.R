@@ -14,12 +14,24 @@
 #' codestring <- extract_code(Jsonstring)
 #'
 extract_code <- function(json_string) {
-  pattern <- "\".?code.?\".?:.?\"(.*?)\".?}"
-  match <- regmatches(json_string, regexec(pattern, json_string))
 
-  code <- match[[1]][2]
-  code<- gsub("\\\\n", "\\\n", code)
-  code<- gsub("\\\\r", "\\\r", code)
+  if (grepl("```R", json_string))
+  {
+    pattern <- "```R(.*?)```"
+    match <- regmatches(json_string, regexec(pattern, json_string))
+
+  }
+  else{
+    pattern <- "\".?code.?\".?:.?\"(.*?)\".?}"
+    match <- regmatches(json_string, regexec(pattern, json_string))
+
+    code <- match[[1]][2]
+    code<- gsub("\\\\n", "\n", code)
+    code<- gsub("\\\\t", "\t", code)
+    code<- gsub("\\\\\\\"", "\\\"", code)
+
+  }
+
 
 
   return(code)
