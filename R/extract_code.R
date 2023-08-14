@@ -17,9 +17,9 @@ extract_code <- function(json_string) {
 
   if (grepl("```R", json_string)|grepl("```r", json_string))
   {
-    pattern <- "```R|r(.*?)```"
+    pattern <- "```(R|r)(.*?)```"
     match <- regmatches(json_string, regexec(pattern, json_string))
-    code <- match[[1]][2]
+    code <- match[[1]][3]
   }
   else{
     pattern <- "\".?code.?\".?:.?\"(.*?)\".?}"
@@ -36,7 +36,4 @@ extract_code <- function(json_string) {
 
   return(code)
 }
-
-
-
 
