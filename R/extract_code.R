@@ -19,7 +19,7 @@ extract_code <- function(json_string) {
   {
     pattern <- "```R(.*?)```"
     match <- regmatches(json_string, regexec(pattern, json_string))
-
+    code <- match[[1]][2]
   }
   else{
     pattern <- "\".?code.?\".?:.?\"(.*?)\".?}"

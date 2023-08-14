@@ -71,6 +71,7 @@ openaichat_continue <- function(messagelist, model, showresult = FALSE, showtoke
       url = chaturl,
       config =add_headers(Authorization = paste("Bearer", api_key)),
       content_type_json(),
+      accept_json(),
       encode = "json",
       body = body
     )
