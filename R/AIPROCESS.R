@@ -110,8 +110,8 @@
 #' }
 #'
 AIPROCESS <- function (need, model, ..., runmode=TRUE, debugmode=FALSE, showtokennum=TRUE, chat_function=NULL){
-  namelist=c("namelist","num_args","str_asdfa","datatemp","alldatainfo","dataname","datatype","datanameandtype","datainfo",
-            "thisdatainfo","alldatainfo","prompttemp","prompt","model","runmode","debugmode","showtokennum","chat_function","code","res")
+  namelist=c("namelist","num_args","str_asdfa","datatemp","alldatainfo","dataname","datatype","datanameandtype","datainfo","packagen","i",
+            "thisdatainfo","alldatainfo","prompttemp","prompt","model","runmode","debugmode","showtokennum","chat_function","code","res","final_res32","package956","package741")
   num_args <- length(list(...))
   if (num_args!=0)
   {
@@ -166,7 +166,17 @@ It\'s structure:[[[datatype]]]'
 
         tryCatch(
           {
-            eval(parse(text = code))
+            package956=(.packages())
+            final_res32=eval(parse(text = code))
+            package741=(.packages())[!((.packages()) %in% package956)]
+
+
+            for (packagen in package741)
+            {
+                detach(paste0("package:",packagen),force=TRUE, character.only = TRUE)
+            }
+            return(final_res32)
+
           },
           error = function(e) {
             message("An error occurred while executing the code:", conditionMessage(e))
