@@ -25,8 +25,7 @@ User needs:
 # User asking
 [[[alldatainfo]]]User needs:[[[request]]]
 # Requirements
-- Give the code can be run directly under the existing variables
-- Prohibit using any variable that does not exist or has not been created
+- Existing variables have already been passed to you, so you can use them directly.Existing variables cannot be directly modified or assigned
 - Prohibit any package install code but load necessary packages,avoid useless packages
 - Print the final data or plot at the end of the code according to the user\'s requirements
 - Prohibit any code comment, give the pure code
@@ -34,10 +33,10 @@ User needs:
 - Prohibit using any variable values in a hard-coded way,unless user provides values for the variables
 - Type conversion if necessary
 - Disable modification of the current working directory unless requested by the user
-- If the user requests a plot, give the most elegant plot
-# Ensure code meet formatting and content requirements
+- If the user requests a plot, show the most elegant plot, don\'t save the plot
+# Ensure code meet format and content requirements
 # Your response JSON format
-{"code" : "Content of the code"}'
+- {"code" : "Content of the code"}'
 
     prompttemp <- check_prompttemp(temptype = temptype, oldprompttemp = oldprompttemp)
 
